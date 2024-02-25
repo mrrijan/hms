@@ -69,7 +69,7 @@ class ReservationApiTest extends TestCase
         $this->assertDatabaseHas('reservations', $reservation);
     }
 
-    public function test_update_route()
+    public function test_update_route_when_room_changed()
     {
         $reservation = Reservation::factory(1)->create()[0];
 
@@ -78,6 +78,7 @@ class ReservationApiTest extends TestCase
         $reservationUpdated = [
             "id" => $reservation->id,
             "room_id" => 2,
+            "room_id_previous" => 4,
             "customer_id" => 4,
             "check_in_date" => "2080-10-21",
             "check_out_date" => "2080-10-25"
@@ -85,7 +86,26 @@ class ReservationApiTest extends TestCase
 
         $response = $this->post('/api/reservation/update', $reservationUpdated);
         $response->assertStatus(201);
-        $this->assertDatabaseHas('reservations', $reservationUpdated);
+        $this->assertDatabaseHas('reservations', ["check_in_date" => $reservationUpdated["check_in_date"]]);
+    }
+
+    public function test_update_route_when_room_is_not_changed()
+    {
+        $reservation = Reservation::factory(1)->create()[0];
+
+        $this->seed(CustomerSeeder::class);
+        $this->seed(RoomSeeder::class);
+        $reservationUpdated = [
+            "id" => $reservation->id,
+            "room_id_previous" => 4,
+            "customer_id" => 4,
+            "check_in_date" => "2080-10-21",
+            "check_out_date" => "2080-10-25"
+        ];
+
+        $response = $this->post('/api/reservation/update', $reservationUpdated);
+        $response->assertStatus(201);
+        $this->assertDatabaseHas('reservations', ["check_out_date" => $reservationUpdated["check_out_date"]]);
     }
 
     public function test_delete_route()
