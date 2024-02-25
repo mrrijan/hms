@@ -26,7 +26,8 @@ const handleOpenDrawer = () => {
 const handleSubmit = (formEl) => {
     const reservationUpdated = {
         id: props.reservationId,
-        room_id: reservation.value.room_id,
+        room_id: reservation.value.room_id_new,
+        room_id_previous: reservation.value.room_id,
         customer_id: reservation.value.customer_id,
         check_in_date: reservation.value.check_in_date,
         check_out_date: reservation.value.check_out_date,
@@ -52,10 +53,10 @@ const handleSubmit = (formEl) => {
     >
         <el-form label-position="top" ref="formRef" :model="reservation">
 
-            <el-form-item prop="room_id" label="Room Number"
-                          :rules="[{required : true , message : 'Please select a room'}]">
+            <el-form-item prop="room_id_new" label="Room Number"
+            >
                 <el-select
-                    v-model="reservation.room_id"
+                    v-model="reservation.room_id_new"
                     class="m-2"
                     placeholder="Select Room Number"
                     style="width: 240px"

@@ -61,10 +61,10 @@ class RoomService
         return $this->roomRepository->getVacantRoomsList();
     }
 
-    public function changeRoomOccupancyStatus($room_id)
+    public function changeRoomOccupancyStatus($room_id, $occupancy_status)
     {
         $data = [
-            "occupancy_status" => 1
+            "occupancy_status" => $occupancy_status
         ];
         $data = $this->roomRepository->update($room_id, $data);
     }

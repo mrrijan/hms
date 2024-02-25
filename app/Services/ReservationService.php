@@ -26,7 +26,7 @@ class ReservationService
             "check_out_date" => $request['check_out_date'],
         ];
         $data = $this->reservationRepository->create($data);
-        $roomService->changeRoomOccupancyStatus($request['room_id']);
+        $roomService->changeRoomOccupancyStatus($request['room_id'], 1);
         if (!$data) throw new CustomException("Reservation Could Not Be Created");
     }
 
@@ -38,13 +38,18 @@ class ReservationService
     public function updateReservation($request, RoomService $roomService)
     {
         $data = [
-            "room_id" => $request['room_id'],
+            "room_id" => $request['room_id'] ?? $request['room_id_previous'],
+//            "room_id_previous" => $request['room_id_previous'],
             "customer_id" => $request['customer_id'],
             "check_in_date" => $request['check_in_date'],
             "check_out_date" => $request['check_out_date'],
         ];
         $data = $this->reservationRepository->update($request['id'], $data);
-        $roomService->changeRoomOccupancyStatus($request['room_id']);
+        //$roomService->changeRoomOccupancyStatus($request['room_id']);
+        if (@$request['room_id']) {
+            $roomService->changeRoomOccupancyStatus($request['room_id'], 1);
+            $roomService->changeRoomOccupancyStatus($request['room_id_previous'], 0);
+        }
         if (!$data) throw new CustomException("Reservation Could not be update");
     }
 

@@ -23,7 +23,8 @@ class ReservationUpdateRequest extends FormRequest
     {
         return [
             "id" => ['required'],
-            "room_id" => ['required'],
+            "room_id" => ['nullable'],
+            "room_id_previous" => ['required_if:room_id,!null'],
             "customer_id" => ['required'],
             "check_in_date" => ['required'],
             "check_out_date" => ['required'],
