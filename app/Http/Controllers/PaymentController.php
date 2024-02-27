@@ -24,7 +24,7 @@ class PaymentController extends Controller
      */
     public function index(PaymentSearchRequest $request, PaymentService $paymentService)
     {
-        $payments = $paymentService->getAllPayments($request, 7);
+        $payments = $paymentService->getAllPayments($request, 10);
         return PaymentsResource::collection($payments);
     }
 

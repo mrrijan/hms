@@ -1,18 +1,9 @@
-:root{
+:root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-weight: 400;
 }
-/*button {*/
-/*    border-radius: 8px;*/
-/*    border: 1px solid transparent;*/
-/*    padding: 0.6em 1.2em;*/
-/*    font-size: 1em;*/
-/*    font-weight: 500;*/
-/*    font-family: inherit;*/
-/*    background-color: #1a1a1a;*/
-/*    cursor: pointer;*/
-/*    transition: border-color 0.25s;*/
-/*}*/
+
+
 .main-container {
     margin-left: 190px;
     transition: all 0.3s ease-in-out;
@@ -22,6 +13,7 @@
     margin-left: 60px;
     transition: all 0.3s ease-in-out;
 }
+
 .menu-topbar-wrapper {
     position: fixed;
     display: block;
@@ -35,6 +27,7 @@
 .menu-topbar-wrapper.collapsed {
     height: 140px !important;
 }
+
 .el-menu-wrapper {
     position: relative;
     margin-top: 40px;
@@ -46,19 +39,49 @@
     transition-duration: 0.3s;
     margin-top: 50px;
 }
+
 a {
     text-decoration: none;
 }
-.el-table{
+
+.el-table {
     margin-top: 1rem;
 }
+
 /*utility classes*/
-.flex{
+.flex {
     display: flex;
 }
-.content-end{
+
+.content-end {
     justify-content: flex-end;
 }
-.items-center{
+
+.items-center {
     align-items: center;
+}
+
+html.light {
+    color: #213547;
+    background-color: #ffffff;
+}
+
+html.light a:hover {
+    color: #747bff;
+}
+
+html.dark {
+    background-color: #242424
+}
+
+.dark .el-table tr {
+    background-color: #242424 !important;
+}
+
+.el-table {
+    border-radius: 7px 7px 0 0;
+}
+
+.el-page-header__breadcrumb {
+    margin-bottom: 3px !important;
 }

@@ -18,7 +18,6 @@ class RoomRepository extends BaseRepository implements RoomRepositoryInterface
         return $this->model
             ->when(@$request['search_term'], function ($q) use ($request) {
                 $q->where('room_number', 'LIKE', "%{$request['search_term']}%")
-                    //->orWhere('identifier', 'LIKE', "%{$request['search_term']}%")
                     ->orWhere('maximum_occupancy', 'LIKE', "%{$request['search_term']}%")
                     ->orWhere('number_of_beds', 'LIKE', "%{$request['search_term']}%");
             })

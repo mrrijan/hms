@@ -14,11 +14,6 @@ const routes = [
         ]
 
     },
-    // {
-    //     path : '/',
-    //     name : 'Dashboard',
-    //     component : import('../views/layouts/Dashboard.vue'),
-    // },
     {
         path: '/',
         name: 'dashboard',
@@ -53,17 +48,6 @@ const routes = [
                             title: 'Customer',
                             breadcrumb: {
                                 label: 'All'
-                            }
-                        }
-                    },
-                    {
-                        path: '/customer/create',
-                        name: 'addCustomer',
-                        component: () => import('../components/drawer/Customer/AddCustomer.vue'),
-                        meta: {
-                            title: 'Add Customer',
-                            breadcrumb: {
-                                label: 'Add'
                             }
                         }
                     },
@@ -117,19 +101,19 @@ const routes = [
                 path: '/reservations',
                 meta: {
                     title: 'Reservation',
-                    breadcrumb : {
-                        label : 'Reservations'
+                    breadcrumb: {
+                        label: 'Reservations'
                     }
                 },
-                children : [
+                children: [
                     {
-                        path : '',
+                        path: '',
                         name: 'reservations',
                         component: () => import('../views/pages/reservation/Reservation.vue'),
-                        meta : {
-                            title : 'Reservation',
-                            breadcrumb : {
-                                label : 'All'
+                        meta: {
+                            title: 'Reservation',
+                            breadcrumb: {
+                                label: 'All'
                             }
                         }
                     }
@@ -139,19 +123,19 @@ const routes = [
                 path: '/payments',
                 meta: {
                     title: 'Payment',
-                    breadcrumb : {
-                        label : 'Payments'
+                    breadcrumb: {
+                        label: 'Payments'
                     }
                 },
-                children : [
+                children: [
                     {
-                        path : '',
+                        path: '',
                         name: 'payments',
                         component: () => import('../views/pages/payment/Payment.vue'),
-                        meta : {
-                            title : 'Payment',
-                            breadcrumb : {
-                                label : 'All'
+                        meta: {
+                            title: 'Payment',
+                            breadcrumb: {
+                                label: 'All'
                             }
                         }
                     }

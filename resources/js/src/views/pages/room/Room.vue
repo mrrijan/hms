@@ -9,7 +9,7 @@ import deleteRoom from '../../../services/room/deleteRoom.js';
 import Pagination from "../../../components/Pagination.vue";
 import AddReservation from "../../../components/drawer/Reservation/AddReservation.vue";
 
-const {destroyRoom,deleteLoadingButton} = deleteRoom();
+const {destroyRoom, deleteLoadingButton} = deleteRoom();
 const {meta, rooms, loadRooms, roomsLoading} = getRooms();
 const router = useRouter();
 const route = useRoute();
@@ -46,7 +46,6 @@ const handleDelete = (room_id) => {
 }
 const occupancyStatus = ref(0);
 const handleChange = (value) => {
-    console.log(typeof value, 'curent value')
     switch (value) {
         case 2 :
             router.push({name: 'rooms', query: {...route.query, occupancy: value,}});
@@ -73,6 +72,7 @@ const handleChange = (value) => {
                 size="small"
                 style="width: 240px"
                 @change="handleChange"
+                :style="{width : '200px'}"
             >
                 <el-option :value="0" label="All"/>
                 <el-option :value="2" label="Vacant"/>

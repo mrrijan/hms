@@ -7,7 +7,7 @@ const emit = defineEmits(['content-updated']);
 
 const formRef = ref(null);
 const {loadCustomers} = getCustomers();
-const {addCustomer,addCustomerLoading} = postCustomer();
+const {addCustomer, addCustomerLoading} = postCustomer();
 const AddCustomerData = reactive({
     name: '',
     age: 1,
@@ -73,7 +73,7 @@ const rules = reactive({
                 <el-input v-model="AddCustomerData.name" clearable></el-input>
             </el-form-item>
             <el-form-item label="Age" prop="age">
-                <el-input-number v-model="AddCustomerData.age"></el-input-number>
+                <el-input-number min="1" v-model="AddCustomerData.age"></el-input-number>
             </el-form-item>
             <el-form-item label="Address" prop="address" :rules="[{required: true, message :'Enter Customer Address'}]"
                           required>
@@ -87,7 +87,8 @@ const rules = reactive({
                 <el-input type="number" v-model="AddCustomerData.phone_no"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="handleSubmit(formRef)" :loading="addCustomerLoading">Create</el-button>
+                <el-button type="primary" @click="handleSubmit(formRef)" :loading="addCustomerLoading">Create
+                </el-button>
             </el-form-item>
         </el-form>
     </el-drawer>

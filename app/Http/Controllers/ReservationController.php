@@ -26,7 +26,7 @@ class ReservationController extends Controller
      */
     public function index(ReservationService $reservationService, ReservationSearchRequest $request)
     {
-        $reservations = $reservationService->getAllReservations($request, 7);
+        $reservations = $reservationService->getAllReservations($request, 10);
         return ReservationsResource::collection($reservations);
     }
 

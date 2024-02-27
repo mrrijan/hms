@@ -18,13 +18,14 @@ use Symfony\Component\HttpFoundation\Response;
 class CustomerController extends Controller
 {
     use Messages;
-    public function index(CustomerService $customerService , CustomerSearchRequest $request)
+
+    public function index(CustomerService $customerService, CustomerSearchRequest $request)
     {
-        $customers = $customerService->getAllCustomers($request,7);
+        $customers = $customerService->getAllCustomers($request, 10);
         return CustomersResource::collection($customers);
     }
 
-    public function store(CustomerStoreRequest $request,CustomerService $customerService)
+    public function store(CustomerStoreRequest $request, CustomerService $customerService)
     {
         try {
             DB::beginTransaction();
@@ -42,7 +43,7 @@ class CustomerController extends Controller
         return response()->json($msg, $stc);
     }
 
-    public function update(CustomerService $customerService , CustomerUpdateRequest $request)
+    public function update(CustomerService $customerService, CustomerUpdateRequest $request)
     {
         try {
             DB::beginTransaction();
@@ -60,13 +61,13 @@ class CustomerController extends Controller
         return response()->json($msg, $stc);
     }
 
-    public function show(CustomerService $customerService , $customer_id)
+    public function show(CustomerService $customerService, $customer_id)
     {
         $customer = $customerService->showCustomerById($customer_id);
         return new CustomersResource($customer);
     }
 
-    public function destroy(CustomerService $customerService , $customer_id)
+    public function destroy(CustomerService $customerService, $customer_id)
     {
         try {
             DB::beginTransaction();

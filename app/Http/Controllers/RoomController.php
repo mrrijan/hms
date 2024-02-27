@@ -25,7 +25,7 @@ class RoomController extends Controller
      */
     public function index(RoomService $roomService, RoomSearchRequest $request)
     {
-        $rooms = $roomService->getALlRooms($request, 7);
+        $rooms = $roomService->getALlRooms($request, 10);
         return RoomsResource::collection($rooms);
     }
 

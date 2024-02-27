@@ -18,12 +18,13 @@ use App\Traits\Messages;
 class StaffController extends Controller
 {
     use Messages;
+
     /**
      * Display a listing of the resource.
      */
-    public function index(StaffService $staffService , StaffSearchRequest $request)
+    public function index(StaffService $staffService, StaffSearchRequest $request)
     {
-        $staffs = $staffService->getAllStaffs($request,7);
+        $staffs = $staffService->getAllStaffs($request, 10);
         return StaffsResource::collection($staffs);
     }
 
@@ -38,7 +39,7 @@ class StaffController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StaffService $staffService , StaffStoreRequest $request)
+    public function store(StaffService $staffService, StaffStoreRequest $request)
     {
         try {
             DB::beginTransaction();
@@ -59,7 +60,7 @@ class StaffController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(StaffService $staffService , $staff_id)
+    public function show(StaffService $staffService, $staff_id)
     {
         $staff = $staffService->showStaffById($staff_id);
         return new StaffsResource($staff);
@@ -97,7 +98,7 @@ class StaffController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(StaffService $staffService,$staff_id)
+    public function destroy(StaffService $staffService, $staff_id)
     {
         try {
             DB::beginTransaction();

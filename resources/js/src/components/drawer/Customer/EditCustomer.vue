@@ -3,7 +3,7 @@ import getCustomer from '../../../services/customer/getCustomer.js'
 import putCustomer from '../../../services/customer/putCustomer.js';
 import {ref} from 'vue';
 
-const {updateCustomer,updateLoadingButton} = putCustomer();
+const {updateCustomer, updateLoadingButton} = putCustomer();
 const formRef = ref(null);
 const editDrawer = defineModel();
 const props = defineProps(['customerId']);
@@ -43,7 +43,7 @@ const handleSubmit = (formRef) => {
                 <el-input v-model="customer.name" clearable></el-input>
             </el-form-item>
             <el-form-item label="Age" prop="age">
-                <el-input-number v-model="customer.age"></el-input-number>
+                <el-input-number min="1" v-model="customer.age"></el-input-number>
             </el-form-item>
             <el-form-item label="Address" prop="address" :rules="[{required: true, message :'Enter Customer Address'}]"
                           required>
@@ -57,7 +57,8 @@ const handleSubmit = (formRef) => {
                 <el-input type="number" v-model="customer.phone_no"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="handleSubmit(formRef)" :loading="updateLoadingButton">Update</el-button>
+                <el-button type="primary" @click="handleSubmit(formRef)" :loading="updateLoadingButton">Update
+                </el-button>
             </el-form-item>
         </el-form>
     </el-drawer>
